@@ -1,19 +1,33 @@
 #include<iostream>
 using namespace std;
 
+char toLowerCase(char ch){
+    if(ch>='a'&& ch<='z'){
+        return ch;
+    }else{
+        char temp = ch-'A'+'a';
+        return temp;
+    }
+}
+
 bool isPalindrome(char s[], int n){
 
-    for(int i=0; i<=(n/2);i++){
-        if(s[i]!=s[n-1-i]){
-            return false;
-        }
+   int st=0;
+   int e=n-1;
+   while(st<=e){
+    if(toLowerCase(s[st])!=toLowerCase(s[e])){
+        return false;
+    }else{
+        st++;
+        e--;
     }
+   }
 
-    return true;
-    
-
+   return true;
 
 }
+
+
 
 int size(char s[]){
     int count=0;
@@ -36,10 +50,12 @@ int main(){
 
     bool ans= isPalindrome(letter,n);
 
-    if(ans==0){
-        cout<<"it is not a palindrome";
+    // cout<<ans;
+
+    if(ans){
+        cout<<"it is  a palindrome";
     }else{
-        cout<<"it is a palindrome";
+        cout<<"it is not a palindrome";
     }
     return 0;
 
